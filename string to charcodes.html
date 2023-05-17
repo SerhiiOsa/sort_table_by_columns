@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="" placeholder="input text">
+    <button onclick="convert()">Convert</button>
+    <div></div>
+    <script>
+        function convert() {
+            let text = document.getElementsByTagName('input')[0].value;
+            let converted = [];
+            let len = text.length;
+            for(let i = 0; i < len; i ++) {
+                converted.push(text.charCodeAt(i));
+            }
+            console.log(converted)
+            document.getElementsByTagName('div')[0].innerHTML = converted;
+        }
+    </script>
+</body>
+</html>
