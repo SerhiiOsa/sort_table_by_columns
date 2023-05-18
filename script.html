@@ -18,6 +18,7 @@
           </tr>
         </thead>
         <tbody>
+          <button style="width: 100px; height: 20px;" onclick="changeDirection()">ascending</button>
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
@@ -59,6 +60,12 @@
         let tableArray = [];
         let sortDirection = 'ascending';
 
+        //changing sort direction
+        function changeDirection() {
+          sortDirection === 'ascending' ? sortDirection = 'descending' : sortDirection = 'ascending'
+          document.getElementsByTagName('button')[0].innerHTML = sortDirection;
+        }
+
         //setting onclick action for columns and geting their names
         for(let i = 1; i <= cols; i ++) {
           colNames[i - 1] = document.querySelectorAll('th')[i].innerHTML;
@@ -78,10 +85,8 @@
         function mySort(property) {
           if(sortDirection === 'ascending') {
             tableArray.sort((a,b) => a[property.innerHTML].localeCompare(b[property.innerHTML]));
-            sortDirection = 'descending';
           } else if (sortDirection === 'descending') {
             tableArray.sort((a,b) => b[property.innerHTML].localeCompare(a[property.innerHTML]));
-            sortDirection = 'ascending';
           }
           
             //changing the table according to sorting property
