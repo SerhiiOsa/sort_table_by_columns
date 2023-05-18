@@ -36,6 +36,17 @@
             <td>the Bird</td>
             <td>@twitter</td>
           </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Allan</td>
+            <td>Word</td>
+            <td>@aaa</td>
+          </tr>
+          <th scope="row">5</th>
+          <td>Walter</td>
+          <td>Dark</td>
+          <td>@www</td>
+        </tr>
         </tbody>
       </table>
       <script>
@@ -47,19 +58,19 @@
         let colNames = [];
         let tableArray = [];
 
+        //setting onclick action for columns and geting their names
+        for(let i = 1; i <= cols; i ++) {
+          colNames[i - 1] = document.querySelectorAll('th')[i].innerHTML;
+            th[i].setAttribute('onclick', 'mySort(this)');
+        }
+
         //Taking values to our object from the table
         for(let i = 0; i < rows; i ++) {
             let currentObject = {};
             for(let j = 0; j < cols; j ++) {
-                colNames[j] = document.querySelectorAll('th')[j + 1].innerHTML;
                 currentObject[colNames[j]] = document.querySelectorAll('td')[i * cols + j].innerHTML;
             }
             tableArray.push(currentObject);
-        }
-
-        //setting onclick action for columns
-        for(let i = 1; i <= cols; i ++) {
-            th[i].setAttribute('onclick', 'mySort(this)');
         }
 
         //sorting function
@@ -68,13 +79,10 @@
             //changing the table according to sorting property
             for(let i = 0; i < rows; i ++) {
                 for(let j = 0; j < cols; j ++) {
-                    colNames[j] = document.querySelectorAll('th')[j + 1].innerHTML;
                     document.querySelectorAll('td')[i * cols + j].innerHTML = tableArray[i][colNames[j]];
                 }
             }
         }
-        
-        console.log(tableArray);
       </script>
 </body>
 </html>
