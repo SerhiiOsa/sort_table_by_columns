@@ -57,6 +57,7 @@
         let cols = cells / rows;
         let colNames = [];
         let tableArray = [];
+        let sortDirection = 'ascending';
 
         //setting onclick action for columns and geting their names
         for(let i = 1; i <= cols; i ++) {
@@ -73,9 +74,16 @@
             tableArray.push(currentObject);
         }
 
-        //sorting function
+        //sorting function according to sort direction
         function mySort(property) {
+          if(sortDirection === 'ascending') {
             tableArray.sort((a,b) => a[property.innerHTML].localeCompare(b[property.innerHTML]));
+            sortDirection = 'descending';
+          } else if (sortDirection === 'descending') {
+            tableArray.sort((a,b) => b[property.innerHTML].localeCompare(a[property.innerHTML]));
+            sortDirection = 'ascending';
+          }
+          
             //changing the table according to sorting property
             for(let i = 0; i < rows; i ++) {
                 for(let j = 0; j < cols; j ++) {
